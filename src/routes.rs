@@ -8,6 +8,6 @@ pub fn create_routes(repo: Repo) -> Router {
         .route("/contacts", get(list_contacts).post(new_contact))
         .route("/contacts/:name", put(edit_contact))
         .route("/contacts/search/:phone", get(search_contact_by_phone))
-        .route("/delete/:name", delete(delete_contact_by_name)) // ✅ Separate route for delete
+        .route("/delete/:name", delete(delete_contact_by_name)) 
         .with_state(repo)
 }

@@ -49,7 +49,6 @@ pub async fn search_contact_by_phone(
     State(repo): State<Repo>,
     Path(phone): Path<String>,
 ) -> Json<Vec<PhoneSearchResult>> {
-    println!("Phone: {} ",phone);
     let results = repo.search_by_phone(&phone).await;
     let mapped: Vec<PhoneSearchResult> = results
         .into_iter()

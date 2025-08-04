@@ -44,13 +44,6 @@ impl ContactRepository for MockContactRepository{
     }
     async fn search_by_phone(&self, phone: &str) -> Vec<Contact> {
         let db = self.data.lock().unwrap();
-        println!("Searching for phone: {}", phone);
-        println!("DB has {} contacts", db.len());
-
-        for c in db.iter() {
-            println!("DB Contact => {:?}", c);
-        }
-
         let matched: Vec<Contact> = db
             .iter()
             .filter(|c| c.phone.contains(phone))
@@ -67,7 +60,7 @@ impl ContactRepository for MockContactRepository{
         let mut db = self.data.lock().unwrap();
         let len_before = db.len();
         db.retain(|c| c.name != name);
-        len_before != db.len() // true if something was deleted
+        len_before != db.len()
     }
 
 }

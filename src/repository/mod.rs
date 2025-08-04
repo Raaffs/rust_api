@@ -1,5 +1,5 @@
 pub mod mock_repository;
-
+pub mod pg_repository;
 use async_trait::async_trait;
 use crate::models::contact::{Contact,NewContact,UpdateContact};
 
